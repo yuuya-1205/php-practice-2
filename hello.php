@@ -18,24 +18,24 @@
 <p>出力</p>
 
 <?php
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $fizz =($_POST['fizz']);
 $buzz =($_POST['buzz']);
-if($fizz === 0 && $buzz === 0) {
-echo '1以上の整数を入力して下さい';
+if((int)$fizz === 0 && (int)$buzz === 0) {
+    echo '1以上の整数を入力して下さい';
 return;
-} elseif(ctype_digit($fizz) && ctype_digit($buzz))
+} elseif(ctype_digit((string)$fizz) && ctype_digit((string)$buzz))
 {
-for($i=1; $i < 100; $i++) {
+for($i = 1; $i < 100; $i++) {
 if($i % $fizz === 0 && $i % $buzz === 0) {
-echo '<br>' . $i . 'FizzBuzz';
+    echo '<br>' . $i . 'FizzBuzz';
 } elseif($i % $fizz === 0) {
-echo '<br>' . $i . 'Fizz';
+    echo '<br>' . $i . 'Fizz';
 } elseif($i % $buzz === 0) {
-echo '<br>' . $i . 'Buzz';
+    echo '<br>' . $i . 'Buzz';
 }
 }
 } else {
-echo '小数点が含まれてます';
+    echo '小数点が含まれてます';
 }
-
+}
